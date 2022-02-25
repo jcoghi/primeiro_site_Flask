@@ -1,0 +1,64 @@
+{% extends 'perfil.html' %}
+
+{% block from_editar_perfil %}
+<div class="container">
+    <hr>
+        <div class="row align-items-center">
+            <div class="col-md-3 align-items-center"></div> <!--ÁREA SEM NADA-->
+            <div class="col-md-5 align-items-center"> <!--ÁREA LOGIN-->
+                <!--TODO: SEMPRE COLOCAR O PARÂMETRO ENCTYPE PARA SUBIR ARQUIVOS OU FOTOS-->
+                <form method="post" action="" class="row border text-center mt-2 mb-3" enctype="multipart/form-data">
+                    {{ form.csrf_token }}
+                    <legend class="text-center">Editar Perfil</legend>
+
+                    <div class="form-group"> <!--CAMPO USERNAME-->
+                        {{form.username.label(class="form-control-label")}}
+
+                        {% if form.username.errors %}
+                            {{form.username(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {% for erro in form.username.errors %}
+                                <strong>{{ erro }}</strong>
+                                {% endfor %}
+                            </div>
+
+                        {% else %}
+                            {{form.username(class="form-control")}}
+                        {% endif %}
+                    </div> <!--CAMPO USERNAME-->
+
+                     <div class="form-group"> <!--CAMPO E-MAIL-->
+                        {{form.email.label(class="form-control-label")}}
+
+                        {% if form.email.errors %}
+                            {{form.email(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {% for erro in form.email.errors %}
+                                <strong>{{ erro }}</strong>
+                                {% endfor %}
+                            </div>
+
+                        {% else %}
+                            {{form.email(class="form-control")}}
+                        {% endif %}
+                    </div> <!--CAMPO E-MAIL-->
+
+                    <div class="form-group m-3">
+                        {{ form.foto_perfil.label }}
+                        {{form.foto_perfil(class="form-control-file")}}
+                        {% if form.foto_perfil.errors %}
+                            {% for erro in form.foto_perfil.errors %}
+                        <span class="text-danger"><strong>{{ erro }}</strong></span><br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="mt-2"> <!--BOTÃO SUBMIT EDIÇÃO PERFIL-->
+                        {{form.botao_submit_editarperfil(class="btn btn-dark")}}
+                    </div> <!--BOTÃO SUBMIT EDIÇÃO PERFIL-->
+                </form>
+            </div><!--col-->
+            <div class="col-md-3 align-items-center"></div> <!--ÁREA SEM NADA-->
+        </div><!--row-->
+    </div><!--container-->
+{% endblock %}

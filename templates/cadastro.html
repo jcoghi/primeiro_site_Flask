@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Cadastre-se</h1>
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Nome Completo: </label>
+            <input type="text" class="form-control" id="inputName">
+          </div><!--col-md-6-->
+
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">E-mail: </label>
+            <input type="email" class="form-control" id="inputEmail4">
+          </div><!--col-md-6-->
+
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Telefone:  </label>
+            <input type="tel" class="form-control" id="inputPhone">
+          </div><!--col-md-6-->
+
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Senha: </label>
+            <input type="password" class="form-control" id="inputPassword4">
+          </div><!--col-md-6-->
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          </div><!--col-12-->
+        </form>
+    </div><!--container-->
+{% endblock %}
