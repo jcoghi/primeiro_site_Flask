@@ -1,8 +1,26 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <div class="container">
-        <h1>Testando com Flask</h1>
-        <p>Estou testando Flask para fazer um site</p>
+    <div class="container mt-5">
+        <h1 class="text-center">Instalações Prediais para tod@s!</h1>
+        <p>Este site é destinado a disseminar conhecimentos teóricos e práticos sobre Instalações Elétricas Prediais
+        em baixa tensão.</p>
+        <hr>
+        {% for post in posts %}
+            <div class="row border mt-4 p-2 meupost">
+                <div class="col-2">
+                    <div class="image me-3">
+                    <img src="{{ url_for('static', filename='fotos_perfil/{}'.format(post.autor.foto_perfil)) }}" alt="Foto do perfil" class="rounded" width="150">
+                    <strong>{{ post.autor.username }}</strong>
+                    </div>
+                </div><!--col-2-->
+
+                <div class="col-10">
+                    <h3><a class="decoration" href="{{url_for('exibir_post', post_id=post.id)}}"> {{ post.titulo }} </a></h3>
+                    <p> {{ post.corpo }} </p>
+                </div><!--col-10-->
+            </div><!--row-->
+        {% endfor %}
+
     </div>
 {% endblock %}
